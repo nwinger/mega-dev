@@ -44,8 +44,9 @@ apart. A parser fix does not fix it, because the input itself is in the wrong or
 Some reports describe a date one day off, or two recipients who see different days for the
 same meeting: "Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting. We held
 it twice." A day/month swap cannot do that. The desk already noted these reports in
-`desk-notes.json`, but the cause table on #4471 files them under `parser`, because it sorts by
-tenant. The cause is not known yet. The ticket asks engineering to check time zones and
+`desk-notes.json`, and the cause table on #4471 files them under `parser`, because it sorts by
+tenant. This page counts them the same way: under their cause, and again in their own row. The
+cause is not known yet. The ticket asks engineering to check time zones and
 daylight saving time.
 
 ## For the desk

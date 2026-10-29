@@ -40,9 +40,16 @@
   </tbody>
 </table>
 
+{#each groups as g (g.problem)}
+  {#each g.alsoIn as o (o.problem)}
+    <p class="note">{o.count} of the <code>{g.problem}</code> reports also count under <code>{o.problem}</code>.</p>
+  {/each}
+{/each}
+
 <style>
   .sum { font-size: 1.1rem; }
   .tags { color: var(--muted); font-size: 0.85em; }
+  .note { color: var(--muted); font-size: 0.85em; }
   .open td { background: var(--warn-bg); }
   .open td:last-child { color: var(--warn); font-weight: 600; }
 </style>
