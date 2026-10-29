@@ -1,1 +1,0 @@
-export{n as component}from"../chunks/B_qslspB.js";

@@ -4,7 +4,7 @@ title: '#4471 · what the reports show'
 owner: support desk
 status: open
 reviewed: 2026-10-29
-signature: Nicklas Pouey-Winger
+signature: v1.eyJzdWIiOiIzNzQ1IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyODc1NDUsImV4cCI6MTc5MzM3Mzk0NX0.0ES_B2qe0iROyDv2xLuc9iHnBo7qrCJ0aA3wjiXKi7s
 ---
 
 <script>
