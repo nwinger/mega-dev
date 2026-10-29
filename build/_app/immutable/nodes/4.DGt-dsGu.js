@@ -1,1 +1,0 @@
-export{n as component}from"../chunks/CBoRG_s8.js";

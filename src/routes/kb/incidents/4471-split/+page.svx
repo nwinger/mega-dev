@@ -1,0 +1,60 @@
+---
+layout: runbook
+title: '#4471 · what the reports show'
+owner: support desk
+status: open
+reviewed: 2026-10-29
+signature: Nicklas Pouey-Winger
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) holds every report about a wrong date since April. The desk merged
+them on the subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject)) and marked the
+ticket known. The reports do not share one cause. Read by tenant, by channel and by body, they
+show separate problems. Each problem now has its own ticket.
+
+<Callout kind="warn">
+The fix queued for #4471 fixes the parser only. The other problems stay after it ships.
+</Callout>
+
+## What #4471 holds
+
+<ProblemTable ticket={4471} />
+
+## parser: day and month change places
+
+The shared parser reads every date month first. Every tenant on file writes the day first. So a
+date the tenant writes as 03/10 comes out as 10 March: "Customer booked 3 October and got an
+invite for 10 March." This is the problem #4471 describes, and the queued fix is for it.
+
+## hint: the booking-v3 form asks for the month first
+
+booking-v3 prints `MM/DD/YYYY` under its date field. People at day-first tenants on booking-v3
+type the month first, as the hint tells them, and the form reads the date day first. The report
+looks the same as a parser report. Only the tenant's form and the channel (`form`) tell them
+apart. A parser fix does not fix it, because the input itself is in the wrong order.
+
+## one-day-move: not a swap
+
+Some reports describe a date one day off, or two recipients who see different days for the
+same meeting: "Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting. We held
+it twice." A day/month swap cannot do that. The desk already noted these reports in
+`desk-notes.json`, but the cause table on #4471 files them under `parser`, because it sorts by
+tenant. The cause is not known yet. The ticket asks engineering to check time zones and
+daylight saving time.
+
+## For the desk
+
+- Intake's tag is a guess from the reporter's browser. The `tagged as` column shows that it
+  disagrees with the tenant. Place a report by its tenant, its channel and its body, not by its tag.
+- A subject line tells you what a person saw, not why it happened. Here every problem in the
+  table shares the same "wrong date" subjects. Decision 0001 accepted that ("engineering merges
+  them later"), but a ticket marked known hid the other problems behind the fix for the parser.
+  Split a big ticket by cause before you mark it known.
+
+<RenderStamp {signature} />
